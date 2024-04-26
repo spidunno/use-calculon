@@ -1,8 +1,8 @@
 import { BigNumber, Complex, EvalFunction, Fraction, Matrix, Unit, compile } from "mathjs";
 import { useEffect, useState } from "react";
 
-type InputType = number | BigNumber | Fraction | Complex | Matrix | Unit | null;
-type OutputType = InputType;
+export type InputType = number | BigNumber | Fraction | Complex | Matrix | Unit | null;
+export type OutputType = InputType;
 
 export function useCalculator(expression: string, inputs?: { 
 	[ key: string ]: InputType
