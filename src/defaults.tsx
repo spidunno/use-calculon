@@ -22,7 +22,7 @@ export const nodes: Node[] = [
 		// you can also pass a React component as a label
 		data: { 
 			expression: 'sin(x)',
-			inputs: ["a", "b", "c"]
+			inputs: ["a", "b", "c", "d", "e"]
 		} as CalculatorNodeData,
 		position: { x: 250, y: 0 },
 	},
@@ -35,5 +35,5 @@ export const nodes: Node[] = [
 ];
 
 export const edges: Edge[] = [
-  // { id: 'e2-3', source: '2', target: '3', animated: true },
+  { id: 'e2-3', source: '1', sourceHandle: 'output', target: '2', targetHandle: 'input-a' },
 ];

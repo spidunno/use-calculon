@@ -10,7 +10,12 @@ export function useCalculator(expression: string, inputs?: {
 	const [ compiled, setCompiled ] = useState<EvalFunction | null>(null);
 	
 	useEffect(() => {
-		setCompiled(compile(expression));
+		try {
+			setCompiled(compile(expression));
+		} catch(e) {
+			
+			setCompiled(null);
+		}
 	}, [expression]);
 	try {
 		return { value: compiled ? compiled.evaluate(inputs) as OutputType : null };

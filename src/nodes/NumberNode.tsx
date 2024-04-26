@@ -4,6 +4,7 @@ import { useStore } from "../store";
 import { Close } from "@mui/icons-material";
 import { useEffect } from "react";
 
+
 export type NumberNodeData = {
 	value: number;
 }
