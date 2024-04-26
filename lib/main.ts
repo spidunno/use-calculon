@@ -6,12 +6,16 @@ export type OutputType = InputType;
 
 export function useCalculator(expression: string, inputs?: { 
 	[ key: string ]: InputType
-}): OutputType | null {
+}): {value: OutputType | null, error?: unknown} {
 	const [ compiled, setCompiled ] = useState<EvalFunction | null>(null);
 	
 	useEffect(() => {
 		setCompiled(compile(expression));
 	}, [expression]);
-	
-	return compiled ? compiled.evaluate(inputs) as OutputType : null;
+	try {
+		return { value: compiled ? compiled.evaluate(inputs) as OutputType : null };
+	} catch(error) {
+		
+		return { value: null, error };
+	}
 }

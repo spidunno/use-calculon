@@ -8,6 +8,7 @@ type Store = {
 	// nodeTypes: NodeTypes,
 	setNodes: (nodes: Node[]) => void,
 	setEdges: (edges: Edge[]) => void,
+	setNodeData: (id: string, data: unknown) => void,
 	// setNodeData: (id: string, data: unknown) => void,
 	onNodesChange: (changes: NodeChange[]) => void,
 	onEdgesChange: (changes: EdgeChange[]) => void,
@@ -20,6 +21,7 @@ export const useStore = create<Store>((set) => ({
 	// nodeTypes,
 	setNodes: (nodes: Node[]) => set({ nodes }),
 	setEdges: (edges: Edge[]) => set({ edges }),
+	setNodeData: (id: string, data: unknown) => set((state) => ({ nodes: state.nodes.map((n) => {if (n.id === id) n.data = data; return n}) })),
 	// setNodeData: (id: string, data: unknown) => set((state) => {
 	// 	const nodeIndex = state.nodes.findIndex((value) => value.id === id);
 	// 	if (typeof nodeIndex === 'undefined') return {};

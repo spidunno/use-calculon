@@ -1,8 +1,10 @@
 import { Edge, Node, NodeTypes } from "reactflow";
 import NumberNode, { NumberNodeData } from "./nodes/NumberNode";
+import CalculatorNode, { CalculatorNodeData } from "./nodes/CalculatorNode";
 
 export const nodeTypes: NodeTypes = {
-	number: NumberNode
+	number: NumberNode,
+	calculator: CalculatorNode
 };
 
 export const nodes: Node[] = [
@@ -12,13 +14,17 @@ export const nodes: Node[] = [
 		data: { 
 			value: 0
 		 } as NumberNodeData,
-		position: { x: 250, y: 25 }
+		position: { x: -250, y: 0 }
 	},
 	{
 		id: '2',
+		type: 'calculator',
 		// you can also pass a React component as a label
-		data: { label: <div>Default Node</div> },
-		position: { x: 100, y: 125 },
+		data: { 
+			expression: 'sin(x)',
+			inputs: ["a", "b", "c"]
+		} as CalculatorNodeData,
+		position: { x: 250, y: 0 },
 	},
 	{
 		id: '3',
@@ -29,5 +35,5 @@ export const nodes: Node[] = [
 ];
 
 export const edges: Edge[] = [
-  { id: 'e2-3', source: '2', target: '3', animated: true },
+  // { id: 'e2-3', source: '2', target: '3', animated: true },
 ];
